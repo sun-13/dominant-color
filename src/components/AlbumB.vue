@@ -59,9 +59,11 @@ onMounted(() => {
 
 <template>
   <div class="album" :style="backgroundStyle">
-    <div class="gradient gradient-3" :style="gradientStyle3"></div>
-    <div class="gradient gradient-1" :style="gradientStyle1"></div>
-    <div class="gradient gradient-2" :style="gradientStyle2"></div>
+    <div class="gradients">
+      <div class="gradient gradient-3" :style="gradientStyle3"></div>
+      <div class="gradient gradient-1" :style="gradientStyle1"></div>
+      <div class="gradient gradient-2" :style="gradientStyle2"></div>
+    </div>
     <img
       ref="imgRef"
       class="album-img"
@@ -82,18 +84,29 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  
+  .gradients {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    filter: blur(100px);
+  }
 
   .gradient {
     position: absolute;
-    z-index: 0;
+    border-radius: 50%;
+    animation-timing-function: ease-in-out;
 
     &.gradient-1 {
+      z-index: 2;
       width: 1000px;
       height: 1000px;
       top: -550px;
       right: -550px;
-      border-radius: 50%;
-      filter: blur(300px);
+      animation: gradient1 10s infinite;
     }
 
     &.gradient-2 {
@@ -101,25 +114,78 @@ onMounted(() => {
       height: 800px;
       left: -400px;
       bottom: -400px;
-      border-radius: 50%;
-      filter: blur(200px);
+      animation: gradient2 14s infinite;
     }
 
     &.gradient-3 {
+      z-index: 3;
       width: 600px;
       height: 600px;
       top: 100px;
       right: -300px;
-      border-radius: 50%;
-      filter: blur(100px);
+      animation: gradient3 8s infinite;
     }
   }
 
   .album-img {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     width: 300px;
     height: 300px;
+  }
+}
+
+@keyframes gradient1 {
+  0% {
+    top: -550px;
+    right: -550px;
+    transform: scale(1);
+  }
+  50% {
+    top: 0;
+    right: 0;
+    transform: scale(1.5);
+  }
+  100% {
+    top: -550px;
+    right: -550px;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradient2 {
+  0% {
+    left: -400px;
+    bottom: -400px;
+    transform: scale(1);
+  }
+  50% {
+    left: 0;
+    bottom: 0;
+    transform: scale(1.5);
+  }
+  100% {
+    left: -400px;
+    bottom: -400px;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradient3 {
+  0% {
+    top: 100px;
+    right: -300px;
+    transform: scale(1);
+  }
+  50% {
+    top: 400px;
+    right: 0px;
+    transform: scale(2);
+  }
+  100% {
+    top: 100px;
+    right: -300px;
+    transform: scale(1);
   }
 }
 </style>
