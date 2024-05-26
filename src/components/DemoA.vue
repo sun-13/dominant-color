@@ -17,7 +17,7 @@ const onSwiper = (e) => {
 };
 
 const onSlideChange = (e) => {
-  console.log('slide change', e.activeIndex);
+  // console.log('slide change', e.activeIndex);
   currentSlideIndex.value = e.activeIndex;
 };
 
@@ -40,6 +40,7 @@ const onSlideChange = (e) => {
         slidesPerView: 1,
       },
     }"
+    lazy="true"
     @swiper="onSwiper"
     @slideChange="onSlideChange"
   >
