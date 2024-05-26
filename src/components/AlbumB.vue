@@ -102,27 +102,27 @@ onMounted(() => {
 
     &.gradient-1 {
       z-index: 2;
-      width: 1000px;
-      height: 1000px;
-      top: -550px;
-      right: -550px;
+      width: 120vh;
+      height: 120vh;
+      top: -60vh;
+      right: -60vh;
       animation: gradient1 10s infinite;
     }
 
     &.gradient-2 {
-      width: 800px;
-      height: 800px;
-      left: -400px;
-      bottom: -400px;
+      width: 100vh;
+      height: 100vh;
+      left: -50vh;
+      bottom: -50vh;
       animation: gradient2 14s infinite;
     }
 
     &.gradient-3 {
       z-index: 3;
-      width: 600px;
-      height: 600px;
-      top: 100px;
-      right: -300px;
+      width: 80vh;
+      height: 80vh;
+      top: 20vh;
+      right: -40vh;
       animation: gradient3 8s infinite;
     }
   }
@@ -137,8 +137,8 @@ onMounted(() => {
 
 @keyframes gradient1 {
   0% {
-    top: -550px;
-    right: -550px;
+    top: -60vh;
+    right: -60vh;
     transform: scale(1);
   }
   50% {
@@ -147,16 +147,16 @@ onMounted(() => {
     transform: scale(1.5);
   }
   100% {
-    top: -550px;
-    right: -550px;
+    top: -60vh;
+    right: -60vh;
     transform: scale(1);
   }
 }
 
 @keyframes gradient2 {
   0% {
-    left: -400px;
-    bottom: -400px;
+    left: -50vh;
+    bottom: -50vh;
     transform: scale(1);
   }
   50% {
@@ -165,26 +165,26 @@ onMounted(() => {
     transform: scale(1.5);
   }
   100% {
-    left: -400px;
-    bottom: -400px;
+    left: -50vh;
+    bottom: -50vh;
     transform: scale(1);
   }
 }
 
 @keyframes gradient3 {
   0% {
-    top: 100px;
-    right: -300px;
+    top: 20vh;
+    right: -40vh;
     transform: scale(1);
   }
   50% {
-    top: 400px;
+    top: 50vh;
     right: 0px;
     transform: scale(2);
   }
   100% {
-    top: 100px;
-    right: -300px;
+    top: 20vh;
+    right: -40vh;
     transform: scale(1);
   }
 }
