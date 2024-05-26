@@ -2,44 +2,51 @@
 import { ref } from 'vue'
 import Album from './Album.vue';
 import { albums } from '../albums.js';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-defineProps({
-  msg: String,
-})
+const modules = [Navigation, Pagination];
 
-const onProgress = (progress) => {
-  console.log('-- progress', progress)
-}
+const currentSlideIndex = ref(0);
 
-const onSlideChange = (swiper) => {
-  console.log('-- slide change', swiper)
-}
+const onSwiper = (e) => {
+  // console.log(e);
+};
+
+const onSlideChange = (e) => {
+  console.log('slide change', e.activeIndex);
+  currentSlideIndex.value = e.activeIndex;
+};
 
 </script>
 
 <template>
-  <swiper-container
+  <Swiper
     class="swiper-container"
+    :modules="modules"
     :slides-per-view="1"
     :space-between="0"
     :centered-slides="true"
-    :navigation="true"
+    navigation
     :pagination="{
       hideOnClick: false,
     }"
-    :loop="true"
+    :loop="false"
     :breakpoints="{
       768: {
         slidesPerView: 1,
       },
     }"
-    @swiperprogress="onProgress"
-    @swiperslidechange="onSlideChange"
+    @swiper="onSwiper"
+    @slideChange="onSlideChange"
   >
-    <swiper-slide v-for="album in albums" class="slide-page">
-        <Album :key="album.id" :album="album" />
-    </swiper-slide>
-  </swiper-container>
+    <SwiperSlide :key="album.id" v-for="(album, i) in albums" class="slide-page">
+        <Album :album="album" :isActive="currentSlideIndex === i" />
+    </SwiperSlide>
+  </Swiper>
 </template>
 
 <style scoped>

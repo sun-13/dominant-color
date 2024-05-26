@@ -1,7 +1,26 @@
 <script setup>
-defineProps({
+import { ref, watch, onMounted } from 'vue';
+
+const props = defineProps({
   album: Object,
-})
+  isActive: Boolean,
+});
+
+const isColorFetched = ref(false);
+
+watch(() => props.isActive, (isActive) => {
+  if (!isActive || isColorFetched.value) {
+    return;
+  }
+  console.log('TODO : fetch color');
+},
+{
+  immediate: true,
+});
+
+// onMounted(() => {
+//   console.log('mounted');
+// });
 
 </script>
 
