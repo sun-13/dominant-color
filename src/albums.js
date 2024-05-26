@@ -18,5 +18,11 @@ export const albums = [
     title: 'Next Level',
     artist: 'aespa',
     cover: '/images/album/next-level.jpg'
-  }
+  },
+  {
+    id: uuidv4(),
+    title: '1989 Taylor\'s Version',
+    artist: 'Taylor Swift',
+    cover: '/images/album/1989.jpg'
+  },
 ];
