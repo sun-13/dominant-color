@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import Album from './Album.vue';
+import AlbumA from './AlbumA.vue';
+import AlbumB from './AlbumB.vue';
 import { albums } from '../albums.js';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -45,7 +46,7 @@ const onSlideChange = (e) => {
     @slideChange="onSlideChange"
   >
     <SwiperSlide :key="album.id" v-for="(album, i) in albums" class="slide-page">
-        <Album :album="album" :isActive="currentSlideIndex === i" />
+        <AlbumB :album="album" :isActive="currentSlideIndex === i" />
     </SwiperSlide>
   </Swiper>
 </template>
