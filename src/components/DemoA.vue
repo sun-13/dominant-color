@@ -19,6 +19,7 @@ const onSlideChange = (swiper) => {
 
 <template>
   <swiper-container
+    class="swiper-container"
     :slides-per-view="1"
     :space-between="0"
     :centered-slides="true"
@@ -42,8 +43,13 @@ const onSlideChange = (swiper) => {
 </template>
 
 <style scoped>
+.swiper-container {
+  width: 100%;
+  height: 100vh;
+}
+
 .slide-page {
   width: 100%;
-  height: 500px;
+  height: 100%;
 }
 </style>
