@@ -1,16 +1,26 @@
 <script setup>
 import { ref } from 'vue'
+import Album from './Album.vue';
+import { albums } from '../albums.js';
 
 defineProps({
   msg: String,
 })
+
+const onProgress = (progress) => {
+  console.log('-- progress', progress)
+}
+
+const onSlideChange = (swiper) => {
+  console.log('-- slide change', swiper)
+}
 
 </script>
 
 <template>
   <swiper-container
     :slides-per-view="1"
-    :space-between="spaceBetween"
+    :space-between="0"
     :centered-slides="true"
     :navigation="true"
     :pagination="{
@@ -25,15 +35,8 @@ defineProps({
     @swiperprogress="onProgress"
     @swiperslidechange="onSlideChange"
   >
-    <swiper-slide>
-      <div class="slide-page">Slide 1</div>
-    </swiper-slide>
-    <swiper-slide>
-      <div class="slide-page">Slide 2</div>
-    </swiper-slide><swiper-slide>
-      <div class="slide-page">Slide 3</div>
-    </swiper-slide><swiper-slide>
-      <div class="slide-page">Slide 4</div>
+    <swiper-slide v-for="album in albums" class="slide-page">
+        <Album :key="album.id" :album="album" />
     </swiper-slide>
   </swiper-container>
 </template>
@@ -42,6 +45,5 @@ defineProps({
 .slide-page {
   width: 100%;
   height: 500px;
-  background: red;
 }
 </style>
