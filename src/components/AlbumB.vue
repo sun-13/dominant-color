@@ -178,7 +178,7 @@ onMounted(() => {
     transform: scale(1);
   }
   50% {
-    top: 50vh;
+    top: 80vh;
     right: 0px;
     transform: scale(2);
   }
